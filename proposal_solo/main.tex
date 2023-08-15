@@ -1,0 +1,205 @@
+\documentclass[12pt]{report}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{hhline}
+\usepackage{svg}
+\usepackage[]{graphicx}
+\usepackage[left=1.5in, right=1in,top=1in,bottom=1in,headheight=6pt, a4paper]{geometry}
+\usepackage{titling}
+\usepackage{booktabs}
+\usepackage{times}
+\usepackage[utf8x]{inputenc}
+\usepackage{xcolor}
+\usepackage{datetime2}
+\usepackage{tabto}
+\usepackage{enumitem}
+\usepackage[font=normalsize,tableposition=top]{caption}
+\usepackage{etoolbox}\usepackage{setspace}
+\usepackage[explicit]{}
+\usepackage{algpseudocode, algorithm}
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{import}
+\usepackage{appendix}
+\usepackage{wrapfig}
+\usepackage{everypage-1x}
+\renewcommand\appendixtocname{APPENDIX}
+\renewcommand\appendixpagename{APPENDIX}
+\renewcommand{\bibname}{REFERENCES}
+\linespread{1.3}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0em}
+
+\usepackage[]{geometry}
+\geometry{a4paper, left=1.5in, top=1in, bottom=1in, right=1in}
+
+\titleformat{\chapter}
+ {\normalfont\centering\fontsize{14}{15}\bfseries}
+ {\MakeUppercase{\chaptertitlename} \thechapter}
+ {0.5em}
+ {\MakeUppercase}
+
+  \titleformat{\section}{
+  \normalfont\fontsize{12}{15}\bfseries
+  }{\thesection}{1em}{}
+
+  \titleformat{\subsection}{
+  \normalfont\fontsize{12}{15}\bfseries
+  }{\thesubsection}{1em}{}
+   \titlespacing{\chapter}{0pt}{-0.5in}{1em}
+  \titlespacing{\section}{0pt}{0pt}{-1em}
+\titlespacing{\subsection}{0pt}{0pt}{-1em}
+\renewcommand{\baselinestretch}{1.5} 
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{12pt}
+\usepackage{tocloft}
+\cftsetindents{section}{1.4em}{1.75em}
+\cftsetindents{subsection}{3.2em}{2.6em}
+\setlength{\cftbeforetoctitleskip}{-2.5em}
+\setlength{\cftbeforechapskip}{0.25em}
+\renewcommand{\cftchapleader}{\dotfill}
+
+\renewcommand{\cftdotsep}{1.5}
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsecpagefont}{\normalfont}
+
+\setlength{\cftbeforeloftitleskip}{-2.5em}
+\setlength{\cftbeforelottitleskip}{-2.5em}
+
+\setlength{\cftfigindent}{0pt}
+\setlength{\cfttabindent}{0pt}
+\renewcommand{\cftfigfont}{Figure }
+\renewcommand{\cfttabfont}{Table }
+\usepackage{caption} 
+%\captionsetup[table]{skip=10pt}
+
+\newcommand{\Lpagenumber}{\ifdim\textwidth=\linewidth\else\bgroup
+  \dimendef\margin=0 %use \margin instead of \dimen0
+  \ifodd\value{page}\margin=\oddsidemargin
+  \else\margin=\evensidemargin
+  \fi
+  \raisebox{\dimexpr -\topmargin-\headheight-\headsep-0.5\linewidth}[0pt][0pt]{%
+    \rlap{\hspace{\dimexpr \margin+\textheight+\footskip}%
+    \llap{\rotatebox{90}{\thepage}}}}%
+\egroup\fi}
+\AddEverypageHook{\Lpagenumber}%
+
+
+
+\begin{document}
+
+\include{0ACover/0cover}
+\include{0ACover/1title}
+\pagenumbering{Roman}
+\include{0HAbstract/abstract}
+
+%=================TOC=========================================================================
+
+\cftsetindents{section}{1.5em}{2.1em}
+\cftsetindents{subsection}{3.6em}{3.1em}
+
+\chapter*{\vspace{0.4cm}\centerline{TABLE OF CONTENTS}}
+
+\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+\vspace{-1cm}
+\def\contentsname{\empty}
+\tableofcontents
+\clearpage
+
+
+
+
+\chapter*{\vspace{0.4cm}\centerline{LIST OF FIGURES}}
+\addcontentsline{toc}{chapter}{LIST OF FIGURES}
+\def\listfigurename{\empty}
+\newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
+\addtocontents{lof}{\protect\noaddvspace}
+\vspace{-1cm}
+\listoffigures
+\clearpage
+
+% \chapter*{\centerline{LIST OF TABLES}}
+% \addcontentsline{toc}{chapter}{LIST OF TABLES}
+% \def\listtablename{\empty}
+% \addtocontents{lot}{\protect\noaddvspace}
+% \listoftables
+% \clearpage
+
+
+
+
+%\include{0IAbbreviations/abbreviations}
+% \newpage
+% =============================================================================
+
+
+\pagenumbering{arabic}
+
+%=====================Report Body=============================================
+
+
+\include{1Introduction/introduction}
+\include{2Literaturereview/literaturereview}
+\include{3RequirementAnalysis/requirementanalysis}
+\include{5Methodology/methodology}
+\include{6SystemDesign/systemdesign}
+% \include{7DiscussionAndAnalysis/discussionAndAnalysis}
+\include{8Conclusion/conclusion}
+% \include{6ProjectSchedule/schedule}
+
+%\newpage
+
+%========================References setup=========================================================
+\newpage
+%\bibliographystyle{ieeetr}
+%\bibliography{References/references}
+
+%\addcontentsline{toc}{chapter}{REFERENCES}
+
+%=============================================================================================
+
+% ================================Appendices Setup================================================
+
+% \appendix
+% \chapter{Docker}
+% \section{Appendix A.1}        % Do not show in table of content.
+% \subsection{Appendix A.1.1}   % Do not show in table of content.
+% \chapter{Appendix B}
+% \section{Appendix B.1}        % Do not show in table of content.
+% \section{Appendix B.2}  
+
+\begin{thebibliography}{99}
+\bibitem{} \emph{"The role of mobile health in blood donation: An integrative review"};Zohreh Vafadar, Reza Khajouei, 2017
+\bibitem{} \emph{“Social media and blood donation”};Ruchi Mehrotra, Priyanka Rawat, 2016
+\end{thebibliography}
+%\begin{appendices}
+
+% \addtocontents{toc}{\textbf{APPENDICES}}
+
+%\chapter*{APPENDICES}
+%\addcontentsline{toc}{chapter}{APPENDICES}
+
+%% \renewcommand\thefigure{\thechapter.\arabic{figure}}
+%\newcommand{\nocontentsline}[3]{}
+%\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+
+%\renewcommand\thesection{\Alph{section}}
+%\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+
+
+%\titleformat{\section}{
+%\normalfont\fontsize{12}{15}\bfseries
+%}{APPENDIX \thesection:}{1em}{}
+
+
+%\titlespacing{\section}{0pt}{-0.5in}{0.5em}
+
+%\renewcommand\thefigure{\thesection.\arabic{figure}}
+
+
+% \input{Appendix/appendix4.tex}
+%\end{appendices}
+
+%=========================================================================
+\end{document}
